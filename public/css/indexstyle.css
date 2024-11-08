@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: "Poppins", sans-serif !important;
+}
+/*ajustes gerais*/
+input:focus {
+    outline: none;
+    border: none; /* Se você também quiser remover a borda */
+  }
+
+  
+/*Config dos botões e imputs*/
+.loginContainer{
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    margin-top: 20vh;
+    padding: 20px;
+}
+.loginContainer h1{
+    text-align: center;
+}
+.loginImp{
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+    background-color: rgb(226, 224, 224);
+}
+#password{
+    margin-bottom: 20px;
+}
+.forgtPass{
+    color: rgb(122, 82, 197);
+    display: block;
+    margin-bottom: 20px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.submitBt{
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(166, 127, 240);
+    padding: 10px 5px;
+    border: none;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
