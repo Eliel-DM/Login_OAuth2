@@ -5,8 +5,7 @@ const axios = require('axios');
 const app = express();
 
 const cors = require('cors');
-const client_secret =  process.env.CLIENT_SECRET;
-const client_id =  process.env.CLIENT_ID;
+
 
 app.use(cors());  // Isso permitirá todas as origens, mas em produção você pode querer restringir para origens específicas
 app.use(express.json());
@@ -19,7 +18,7 @@ app.post('/login', async (req, res) => {
         console.log("CPF e OTP são obrigatórios");
         return res.status(400).json({ message: "CPF e OTP são obrigatórios" });
     }
-
+    console.log(process.env.CLIENT_ID);
     const requestBody = {
         client_id : process.env.CLIENT_ID, 
         client_secret: process.env.CLIENT_SECRET, 
