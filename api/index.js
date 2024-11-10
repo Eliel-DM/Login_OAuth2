@@ -1,13 +1,15 @@
+require('dotenv').config();
+
 const express = require('express');
 const axios = require('axios'); 
 const app = express();
-const PORT = 3001;
+
 const cors = require('cors');
+const client_secret =  process.env.CLIENT_SECRET;
+const client_id =  process.env.CLIENT_ID;
+
 app.use(cors());  // Isso permitirá todas as origens, mas em produção você pode querer restringir para origens específicas
-
-
 app.use(express.json());
-
 
 app.post('/login', async (req, res) => {
     const { cpf, otp } = req.body;
@@ -19,8 +21,8 @@ app.post('/login', async (req, res) => {
     }
 
     const requestBody = {
-        client_id: 'c7da6c69348aa2198da7a4b137e949cec07bc0a5', 
-        client_secret: '46ef7a9fa6414b41f72dc27a8f16f124f88d759f', 
+        client_id : process.env.CLIENT_ID, 
+        client_secret: process.env.CLIENT_SECRET, 
         username: cpf,  
         password: otp,  
         grant_type: 'password',
@@ -29,7 +31,7 @@ app.post('/login', async (req, res) => {
     };
 
     try {
-        const response = await axios.post('https://api.birdid.com.br/v0/oauth/pwd_authorize', requestBody, {
+        const response = await axios.post(process.env.AUTH_ENDPOINT, requestBody, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -44,6 +46,6 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${process.env.PORT}`);
 });
